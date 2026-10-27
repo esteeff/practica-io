@@ -1,0 +1,4 @@
+INC-007|Error en base de datos|ALTA|incidencias-lunes.txt
+INC-002|Servidor de correo no responde|ALTA|incidencias.txt
+INC-004|Usuario no puede iniciar sesión|ALTA|incidencias.txt
+INC-006|Falla del servidor de archivos|ALTA|incidencias.txt

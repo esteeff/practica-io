@@ -304,6 +304,8 @@ System.out.println(directorioTemporal);
 
 ¿En qué situaciones podría ser conveniente utilizar un archivo temporal en lugar de un archivo permanente?
 
+Es conveniente usar archivos temporales cuando necesitas procesar información de forma intermedia o rápida y no requieres que esos datos se guarden para siempre. Por ejemplo: al descargar una imagen de internet, primero se guarda en un temporal mientras se verifica que no esté corrupta, y luego se mueve a su carpeta final; o al exportar un archivo pesado (como un PDF), se genera en un temporal para evitar que el usuario vea un archivo a medias si el programa falla.
+
 
 
 # Parte IX. Selección de archivos mediante patrones glob
@@ -330,11 +332,17 @@ reporte?.txt
 
 Indicar qué patrón utilizaría para:
 
-1. Seleccionar todos los archivos Java.
-2. Seleccionar todos los archivos CSV.
-3. Seleccionar `reporte1.txt` a `reporte9.txt`.
-4. Seleccionar archivos que comiencen con `log`.
+1. Seleccionar todos los archivos Java. 
+*.java
 
+2. Seleccionar todos los archivos CSV.
+*.csv
+
+3. Seleccionar `reporte1.txt` a `reporte9.txt`.
+reporte?.txt
+
+4. Seleccionar archivos que comiencen con `log`.
+log*
 
 
 # Parte X. NIO: Channels y Buffers

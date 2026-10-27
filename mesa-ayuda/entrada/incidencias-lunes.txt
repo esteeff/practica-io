@@ -1,0 +1,2 @@
+INC-007|Error en base de datos|ALTA
+INC-008|Cambio de contraseña|BAJA

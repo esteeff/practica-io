@@ -1,0 +1,12 @@
+REPORTE CONSOLIDADO DE INCIDENCIAS
+==================================
+
+>> Procesando archivo: incidencias-lunes.txt
+>> Procesando archivo: incidencias.txt
+
+--- RESUMEN GLOBAL ---
+Archivos procesados: 2
+Total de incidencias: 8
+Prioridad ALTA: 4
+Prioridad MEDIA: 2
+Prioridad BAJA: 2

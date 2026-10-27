@@ -1,0 +1,1 @@
+Esto no es un archivo de texto válido, no lo debe leer.
