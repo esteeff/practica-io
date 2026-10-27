@@ -554,24 +554,66 @@ FileOutputStream
 
 ## 20. Preguntas de reflexión
 
-1. ¿Qué es un *stream*?
-2. ¿Cuál es la diferencia entre un *input stream* y un *output stream*?
+1. ¿Qué es un stream?
+Es un flujo de datos que viaja desde una fuente (como un archivo) hacia un programa (flujo de entrada), o desde el programa hacia un destino (flujo de salida).
+
+2. ¿Cuál es la diferencia entre un input stream y un output stream?
+El input stream se usa para leer datos (el programa recibe información). El output stream se usa para escribir datos (el programa envía información).
+
 3. ¿Cuál es la diferencia entre flujos de bytes y caracteres?
-4. ¿Cuándo utilizaría `FileInputStream` en lugar de `FileReader`?
-5. ¿Qué ventaja proporciona `BufferedReader`?
-6. ¿Qué devuelve `readLine()` cuando termina el archivo?
+Los flujos de bytes (InputStream/OutputStream) leen y escriben datos binarios (8 bits), ideales para imágenes, audios o videos. Los flujos de caracteres (Reader/Writer) leen y escriben texto, traduciendo los caracteres a la codificación adecuada (como UTF-8).
+
+4. ¿Cuándo utilizaría FileInputStream en lugar de FileReader?
+Cuando necesito copiar o procesar archivos que no son de texto (imágenes, archivos comprimidos, ejecutables), porque FileReader corrompería los datos binarios al intentar interpretarlos como letras.
+
+5. ¿Qué ventaja proporciona BufferedReader?
+Utiliza un búfer en memoria. En lugar de leer el disco duro carácter por carácter (lo cual es muy lento), lee un bloque grande de datos de una sola vez y lo guarda en memoria, acelerando enormemente la lectura.
+
+6. ¿Qué devuelve readLine() cuando termina el archivo?
+Devuelve null.
+
 7. ¿Por qué los flujos con búfer pueden mejorar el desempeño?
+Porque reducen la cantidad de veces que el programa tiene que comunicarse con el sistema operativo para acceder al disco duro. Al leer/escribir en bloques grandes, el proceso es mucho más rápido.
+
 8. ¿Qué diferencia existe entre una ruta absoluta y una relativa?
-9. ¿Qué representa un objeto `Path`?
-10. ¿Cuál es la responsabilidad de la clase `Files`?
-11. ¿Qué hace `Files.exists()`?
-12. ¿Para qué se utiliza `resolve()`?
-13. ¿Qué ventaja proporciona `Files.createDirectories()`?
-14. ¿Qué es una expresión *glob*?
-15. ¿Qué relación existe entre un `Channel` y un `Buffer` en NIO?
+Una ruta absoluta es la dirección completa desde la raíz del disco (ej. C:\Users\estee\datos\mensaje.txt). Una ruta relativa indica la ubicación partiendo desde la carpeta donde se está ejecutando el programa (ej. datos/mensaje.txt).
+
+9. ¿Qué representa un objeto Path?
+Representa la ubicación de un archivo o directorio en el sistema de archivos de forma abstracta, sin necesidad de que el archivo exista físicamente todavía.
+
+10. ¿Cuál es la responsabilidad de la clase Files?
+Es una clase de utilería que contiene métodos estáticos para realizar operaciones sobre archivos y directorios: leer, escribir, copiar, mover, borrar, verificar existencia o consultar tamaños.
+
+11. ¿Qué hace Files.exists()?
+Comprueba si un archivo o directorio existe en la ruta especificada. Devuelve true o false.
+
+12. ¿Para qué se utiliza resolve()?
+Sirve para construir una ruta a partir de otra. Por ejemplo, si tienes la ruta de una carpeta y le aplicas .resolve("archivo.txt"), te devuelve la ruta completa combinando ambas.
+
+13. ¿Qué ventaja proporciona Files.createDirectories()?
+Crea la carpeta especificada y, si no existen, crea también todas las carpetas "padre" en el camino. Por ejemplo, si la carpeta salida no existe, la crea, y también crea reportes y procesados de un solo golpe.
+
+14. ¿Qué es una expresión glob?
+Es un patrón de búsqueda de archivos basado en comodines. Por ejemplo *.txt (todos los .txt), foto?.jpg (foto1, foto2, etc.) o [abc].txt (a.txt, b.txt, c.txt).
+
+15. ¿Qué relación existe entre un Channel y un Buffer en NIO?
+En NIO, los datos no se mueven directamente entre el programa y el archivo. Se leen desde un Channel (canal) hacia un Buffer (búfer) en memoria, y el programa procesa los datos desde ese búfer. Para escribir es al revés: el programa llena el búfer y luego el canal lo envía al archivo.
+
 16. ¿Qué mecanismo utilizaría para procesar un archivo de texto línea por línea?
+BufferedReader (que envuelve a un FileReader), utilizando el método readLine().
+
 17. ¿Qué mecanismo utilizaría para copiar una imagen?
+FileInputStream y FileOutputStream (flujos de bytes).
+
 18. ¿Qué mecanismos de E/S fueron necesarios en el sistema de incidencias?
+
+Path y Files (de java.nio.file) para manejar rutas, verificar existencia, crear carpetas y abrir los flujos.
+
+BufferedReader para leer el archivo de entrada línea por línea.
+
+PrintWriter (envuelto en BufferedWriter) para escribir los archivos de reporte.
+
+Un DirectoryStream con patrón glob (*.txt) para el reto adicional.
 
 
 
